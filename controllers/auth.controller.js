@@ -86,6 +86,7 @@ export const login = async (req, res, next) => {
       status: 200,
       message: "Login Success",
       data: user,
+      token:token
     });
 
     // const savedUser = await User.findById(user._id);
