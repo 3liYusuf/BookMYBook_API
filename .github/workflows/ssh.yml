@@ -1,9 +1,0 @@
-- name: Test SSH connection
-  uses: appleboy/ssh-action@main
-  with:
-    host: ${{ secrets.HOST }}
-    username: ${{ secrets.USER }}
-    key: ${{ secrets.SSH_PRIVATE_KEY }}
-    script: |
-      echo "Testing SSH connection"
-      ssh -o StrictHostKeyChecking=no -i /path/to/your/private/key username@hostname "echo Successfully connected"
