@@ -29,6 +29,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/BookMYBook_API
-            git pull origin main
+            git reset --hard HEAD
+            git pull origin master --force
             npm install
             pm2 restart bookAPI
