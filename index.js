@@ -39,7 +39,7 @@ app.use((obj, req, res, next) => {
   });
 });
 
-const connectMongoDB = async () => {
+const connectMongoDB = async (next) => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
     if(process.argv.includes("--seed")){
