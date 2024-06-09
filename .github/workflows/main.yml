@@ -30,6 +30,6 @@ jobs:
           script: |
             cd /var/www/BookMYBook_API
             git reset --hard HEAD
-            git pull origin master --force
+            git pull origin main --force
             npm install
             pm2 restart bookAPI
