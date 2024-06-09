@@ -39,7 +39,7 @@ app.use((obj, req, res, next) => {
   });
 });
 
-const connectMongoDB = async (next) => {
+const connectMongoDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
     if(process.argv.includes("--seed")){
@@ -47,7 +47,9 @@ const connectMongoDB = async (next) => {
     }
     console.log("Connected to DataBase!");
   } catch (err) {
-    return next(CreateError(500, "Err DB Connection"));
+    // return next(CreateError(500, "Err DB Connection"));
+    console.error("Failed to connect to MongoDB", err);
+    process.exit(1);
   }
 };
 
