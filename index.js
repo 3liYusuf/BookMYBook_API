@@ -40,8 +40,9 @@ app.use((obj, req, res, next) => {
 });
 
 const connectMongoDB = async () => {
+  let url = process.env.MONGO_URL;
   try {
-    await mongoose.connect(process.env.MONGO_URL);
+    await mongoose.connect(url);
     if(process.argv.includes("--seed")){
       await seedBooksData();
     }
