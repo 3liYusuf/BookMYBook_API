@@ -28,7 +28,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /path/to/your/project
+            cd /var/www/BookMYBook_API
             git pull origin main
             npm install
-            pm2 restart your-app-name
+            pm2 restart bookAPI
