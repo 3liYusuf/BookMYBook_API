@@ -18,7 +18,7 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-  origin: ["http://localhost:4200", "http://3liYusuf.com", "http://3liYusuf.com/BookMYBook"],
+  origin: ["http://localhost:4200", "http://3liYusuf.com", "https://3liYusuf.com"],
   credentials: true
 };
 app.use(cors(corsOptions));
