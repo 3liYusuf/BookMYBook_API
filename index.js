@@ -12,8 +12,8 @@ import { seedBooksData } from "./seed.js";
 import { verifyToken } from "./utils/tokenMiddleware.js"; // Importing token verification middleware
 import jwt from 'jsonwebtoken';
 
-const app = express();
 dotenv.config();
+const app = express();
 console.log(process.env.MONGO_URL);
 app.use(express.json());
 app.use(cookieParser());
