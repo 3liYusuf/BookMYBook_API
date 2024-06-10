@@ -62,10 +62,10 @@ export const login = async (req, res, next) => {
       "roles",
       "role"
     ); //(varname, its Ref)
-    const { roles } = user;
     if (!user) {
       return next(CreateError(404, "User Not Found!"));
     }
+    const { roles } = user;
 
     const isPassCorrect = await bcrypt.compare(
       req.body.password,
