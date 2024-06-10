@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 
 export const verifyToken = (req, res, next) => {
     const authHeader = req.headers.authorization;
-    console.log('authHeader:',authHeader);
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
         return res.status(401).json({
@@ -12,7 +11,6 @@ export const verifyToken = (req, res, next) => {
     }
 
     const token = authHeader.split(' ')[1]; // Split the header and extract the token
-    console.log("Token:", token); // Log the extracted token
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
