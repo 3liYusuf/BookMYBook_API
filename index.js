@@ -1,8 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-dotenv.config();
-console.log(process.env.MONGO_URL);
 import roleRoute from "./routes/role.js";
 import authRoute from "./routes/auth.js";
 import userRoute from "./routes/user.js";
@@ -15,6 +13,8 @@ import { verifyToken } from "./utils/tokenMiddleware.js"; // Importing token ver
 import jwt from 'jsonwebtoken';
 
 const app = express();
+dotenv.config();
+
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
