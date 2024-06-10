@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+dotenv.config();
+console.log(process.env.MONGO_URL);
 import roleRoute from "./routes/role.js";
 import authRoute from "./routes/auth.js";
 import userRoute from "./routes/user.js";
@@ -12,9 +14,7 @@ import { seedBooksData } from "./seed.js";
 import { verifyToken } from "./utils/tokenMiddleware.js"; // Importing token verification middleware
 import jwt from 'jsonwebtoken';
 
-dotenv.config();
 const app = express();
-console.log(process.env.MONGO_URL);
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
