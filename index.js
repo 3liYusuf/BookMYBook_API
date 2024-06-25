@@ -10,7 +10,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { seedBooksData } from "./seed.js";
 import { verifyToken } from "./utils/tokenMiddleware.js"; // Importing token verification middleware
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 const app = express();
 dotenv.config();
@@ -18,14 +18,21 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-  origin: ["http://localhost:4200", "http://3liYusuf.com", "https://3liYusuf.com"],
-  credentials: true
+  origin: [
+    "http://localhost:4200",
+    "http://3liYusuf.com",
+    "https://3liYusuf.com",
+  ],
+  credentials: true,
 };
 app.use(cors(corsOptions));
 app.use("/api/auth", authRoute);
-app.use("/api/role", verifyToken, roleRoute);
-app.use("/api/user", verifyToken, userRoute);
-app.use("/api/book", verifyToken, bookRoute);
+app.use("/api/role", roleRoute);
+app.use("/api/user", userRoute);
+app.use("/api/book", bookRoute);
+// app.use("/api/role", verifyToken, roleRoute);
+// app.use("/api/user", verifyToken, userRoute);
+// app.use("/api/book", verifyToken, bookRoute);
 
 //Err handler
 app.use((obj, req, res, next) => {
@@ -42,7 +49,7 @@ app.use((obj, req, res, next) => {
 const connectMongoDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
-    if(process.argv.includes("--seed")){
+    if (process.argv.includes("--seed")) {
       await seedBooksData();
     }
     console.log("Connected to DataBase!");
