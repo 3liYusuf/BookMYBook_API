@@ -27,9 +27,13 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use("/api/auth", authRoute);
-app.use("/api/role", roleRoute);
-app.use("/api/user", userRoute);
-app.use("/api/book", bookRoute);
+app.use("/api/role", verifyToken, roleRoute);
+app.use("/api/user", verifyToken, userRoute);
+app.use("/api/book", verifyToken, bookRoute);
+app.use("/BookAPI/api/auth", authRoute);
+app.use("/BookAPI/api/role", verifyToken, roleRoute);
+app.use("/BookAPI/api/user", verifyToken, userRoute);
+app.use("/BookAPI/api/book", verifyToken, bookRoute);
 // app.use("/api/role", verifyToken, roleRoute);
 // app.use("/api/user", verifyToken, userRoute);
 // app.use("/api/book", verifyToken, bookRoute);
