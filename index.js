@@ -36,10 +36,10 @@ app.use("/BookAPI/api/book", bookRoute);
 
 //Err handler
 app.use((obj, req, res, next) => {
-  const statusCode = obj.status;
+  const statusCode = obj.status || 500; // Default to 500 if status is undefined
   const msg = obj.message || "Something Went Wrong!";
   return res.status(statusCode).json({
-    success: [200, 201, 204].some((a) => a === obj.status) ? true : false,
+    success: [200, 201, 204].includes(statusCode),
     status: statusCode,
     message: msg,
     data: obj.data,
