@@ -26,10 +26,10 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
-app.use("/BookAPI/api/auth", authRoute);
-app.use("/BookAPI/api/role", roleRoute);
-app.use("/BookAPI/api/user", userRoute);
-app.use("/BookAPI/api/book", bookRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/role", roleRoute);
+app.use("/api/user", userRoute);
+app.use("/api/book", bookRoute);
 // app.use("/api/role", verifyToken, roleRoute);
 // app.use("/api/user", verifyToken, userRoute);
 // app.use("/api/book", verifyToken, bookRoute);
